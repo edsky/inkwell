@@ -124,10 +124,10 @@ impl ContextImpl {
         let mut module = ptr::null_mut();
         let mut err_str = ptr::null_mut();
 
-        #[cfg(not(feature = "llvm22-1"))]
+        #[cfg(not(any(feature = "llvm22-1", feature = "llvm23-1")))]
         let code =
             unsafe { LLVMParseIRInContext(self.as_mut_ptr(), memory_buffer.as_mut_ptr(), &mut module, &mut err_str) };
-        #[cfg(feature = "llvm22-1")]
+        #[cfg(any(feature = "llvm22-1", feature = "llvm23-1"))]
         let code =
             unsafe { LLVMParseIRInContext2(self.as_mut_ptr(), memory_buffer.as_mut_ptr(), &mut module, &mut err_str) };
 

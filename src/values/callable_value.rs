@@ -182,7 +182,16 @@ unsafe impl AsTypeRef for CallableValue<'_> {
     fn as_type_ref(&self) -> LLVMTypeRef {
         match self.0 {
             CallableValueEnum::Function(function) => function.get_type().as_type_ref(),
-            CallableValueEnum::Pointer(pointer) => pointer.get_type().get_element_type().as_type_ref(),
+            CallableValueEnum::Pointer(pointer) => {
+                #[cfg(not(feature = "llvm23-1"))]
+                {
+                    pointer.get_type().get_element_type().as_type_ref()
+                }
+                #[cfg(feature = "llvm23-1")]
+                {
+                    pointer.get_type().as_type_ref()
+                }
+            }
         }
     }
 }

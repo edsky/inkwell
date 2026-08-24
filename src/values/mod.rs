@@ -26,7 +26,8 @@ mod vec_value;
     feature = "llvm19-1",
     feature = "llvm20-1",
     feature = "llvm21-1",
-    feature = "llvm22-1"
+    feature = "llvm22-1",
+    feature = "llvm23-1"
 ))]
 pub(crate) mod operand_bundle;
 

@@ -27,6 +27,7 @@ llvm19-1 = ["llvm-sys-191"]
 llvm20-1 = ["llvm-sys-201"]
 llvm21-1 = ["llvm-sys-211"]
 llvm22-1 = ["llvm-sys-221"]
+llvm23-1 = ["llvm-sys-231"]
 
 # Don't link against LLVM libraries. This is useful if another dependency is
 # installing LLVM. See llvm-sys for more details. We can't enable a single
@@ -44,6 +45,7 @@ llvm19-1-no-llvm-linking = ["llvm19-1", "llvm-sys-191/no-llvm-linking"]
 llvm20-1-no-llvm-linking = ["llvm20-1", "llvm-sys-201/no-llvm-linking"]
 llvm21-1-no-llvm-linking = ["llvm21-1", "llvm-sys-211/no-llvm-linking"]
 llvm22-1-no-llvm-linking = ["llvm22-1", "llvm-sys-221/no-llvm-linking"]
+llvm23-1-no-llvm-linking = ["llvm23-1", "llvm-sys-231/no-llvm-linking"]
 
 # Linking preference.
 # If none of these are enabled, it defaults to force static linking.
@@ -131,11 +133,9 @@ target-all = [
     "target-hexagon",
     "target-nvptx",
     "target-msp430",
-    "target-xcore",
     "target-powerpc",
     "target-sparc",
     "target-bpf",
-    "target-lanai",
     "target-webassembly",
     "target-riscv",
     "target-loongarch",
@@ -157,6 +157,7 @@ llvm-sys-191 = { package = "llvm-sys", version = "191.0.0", optional = true }
 llvm-sys-201 = { package = "llvm-sys", version = "201.0.0", optional = true }
 llvm-sys-211 = { package = "llvm-sys", version = "211.0.0", optional = true }
 llvm-sys-221 = { package = "llvm-sys", version = "221.0.0", optional = true }
+llvm-sys-231 = { package = "llvm-sys", version = "231.0.0-rc2", optional = true }
 
 libc = "0.2"
 thiserror = "2.0.11"
